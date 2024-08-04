@@ -14,11 +14,20 @@
           (keydown.enter)="saveTodo($event)"
         />
       </div>
-      <ul>
-        <li class="todo-element" *ngFor="let todo of todos">
-          {{ todo.description }}
-        </li>
-      </ul>
+      <div class="todo-container">
+        <ul>
+          <div class="todo-element" *ngFor="let todo of todos">
+            <label class="checkbox-label">
+              <input type="checkbox" />
+              <span class="checkbox-circle"></span>
+            </label>
+            <li class="todo">{{ todo.description }}</li>
+            <button class="btn delete">
+              <img src="./../../../assets/icon-cross.svg" alt="cross" />
+            </button>
+          </div>
+        </ul>
+      </div>
     </section>
   </main>
 </body>

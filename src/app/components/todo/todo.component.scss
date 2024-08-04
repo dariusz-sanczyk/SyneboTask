@@ -1,10 +1,11 @@
 @import "./../../../styles/variables.scss";
+@import "./../../../styles/mixins.scss";
 
 .create-todo {
   flex: 1;
   border: none;
-  background-color: $Very-Light-Grayish-Blue;
-  color: $Dark-Grayish-Blue;
+  background-color: white;
+  color: $Very-Dark-Grayish-Blue;
   font-size: 1rem;
   margin-right: 1.3rem;
   outline: none;
@@ -17,39 +18,29 @@ h1 {
 }
 
 .input-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  background-color: $Very-Light-Grayish-Blue;
+  @include flexboxcustom();
+  background-color: white;
   height: 3.4rem;
   margin-top: 1.5rem;
 
   span {
     width: 26px;
     height: 26px;
-    border: 2px solid $Dark-Grayish-Blue;
+    border: 2px solid $Light-Grayish-Blue;
     border-radius: 50%;
     margin: 0 1.3rem;
   }
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  background-color: transparent;
+  @include flexboxcustom();
 }
 
 .wrapper {
+  @include flexboxcustom(flex-start, column);
   padding: 75px 0;
   width: 38%;
   min-height: 90vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
 
   > * {
     width: 100%;
@@ -58,8 +49,12 @@ h1 {
   }
 }
 
+.todo-container {
+  background-color: white;
+  box-shadow: 1px 11px 89px $Light-Grayish-Blue;
+}
+
 .todo-element {
-  width: 100%;
   background-color: white;
   list-style: none;
   cursor: pointer;

@@ -1,0 +1,12 @@
+@mixin flexboxcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexboxcustom($main-axis: space-between, $flex-direction: row) {
+  display: flex;
+  justify-content: $main-axis;
+  align-items: center;
+  flex-direction: $flex-direction;
+}

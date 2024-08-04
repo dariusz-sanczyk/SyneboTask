@@ -13,6 +13,11 @@ export class TodoComponent {
 
   todos = [
     { description: "EHEHEEHEHEHE" },
+    { description: "AHAHAHAHAH" },
+    { description: "AHAHAHAHAH" },
+    { description: "AHAHAHAHAH" },
+    { description: "AHAHAHAHAH" },
+    { description: "AHAHAHAHAH" },
     { description: "AHAHAHAHAH" }
   ]
 
