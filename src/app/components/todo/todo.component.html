@@ -11,6 +11,7 @@
           class="create-todo"
           type="text"
           placeholder="Create a new todo..."
+          (keydown.enter)="saveTodo($event)"
         />
       </div>
       <ul>
