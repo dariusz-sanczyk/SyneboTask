@@ -1,20 +1,23 @@
 <body>
-  <!-- <img
-    class="bg-img"
-    src="../../../assets/bg-desktop-light.jpg"
-    alt="desktop-bg"
-  /> -->
-  <main class="todo__conatiner">
-    <header class="header">
-      <h1>TODO</h1>
-      <img src="./../../../assets/icon-moon.svg" alt="moon-icon" />
-    </header>
-    <section>
-      <input
-        class="create-todo"
-        type="text"
-        placeholder="Create a new todo..."
-      />
+  <main>
+    <section class="wrapper">
+      <header class="header">
+        <h1>T O D O</h1>
+        <img src="./../../../assets/icon-moon.svg" alt="moon-icon" />
+      </header>
+      <div class="input-container">
+        <span class="circle"></span>
+        <input
+          class="create-todo"
+          type="text"
+          placeholder="Create a new todo..."
+        />
+      </div>
+      <ul>
+        <li class="todo-element" *ngFor="let todo of todos">
+          {{ todo.description }}
+        </li>
+      </ul>
     </section>
   </main>
 </body>
