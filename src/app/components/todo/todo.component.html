@@ -18,11 +18,11 @@
         <ul>
           <div class="todo-element" *ngFor="let todo of todos">
             <label class="checkbox-label">
-              <input type="checkbox" />
+              <input class="checkbox" type="checkbox" />
               <span class="checkbox-circle"></span>
             </label>
-            <li class="todo">{{ todo.description }}</li>
-            <button class="btn delete">
+            <li class="todo-description">{{ todo.description }}</li>
+            <button class="btn">
               <img src="./../../../assets/icon-cross.svg" alt="cross" />
             </button>
           </div>
