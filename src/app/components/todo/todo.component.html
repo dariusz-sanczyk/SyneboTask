@@ -16,7 +16,7 @@
       </div>
       <div class="todo-container">
         <ul>
-          <div class="todo-element" *ngFor="let todo of todos">
+          <div class="todo-element" *ngFor="let todo of filteredTodos$ | async">
             <label class="checkbox-label">
               <input class="checkbox" type="checkbox" />
               <span class="checkbox-circle"></span>
