@@ -22,12 +22,22 @@
               <span class="checkbox-circle"></span>
             </label>
             <li class="todo-description">{{ todo.description }}</li>
-            <button class="btn">
+            <button class="btn-delete">
               <img src="./../../../assets/icon-cross.svg" alt="cross" />
             </button>
           </div>
         </ul>
+        <div class="actions">
+          <p class="items-left">{{ itemsLeft }} items left</p>
+          <div class="filters">
+            <button class="filter-btn all active">All</button>
+            <button class="filter-btn live">Active</button>
+            <button class="filter-btn completed-btn">Completed</button>
+          </div>
+          <button class="btn-clear">Clear Completed</button>
+        </div>
       </div>
+      <p class="drag-info">Drag and drop to reorder list</p>
     </section>
   </main>
 </body>

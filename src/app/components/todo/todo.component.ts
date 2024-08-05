@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent {
-
-  todos = [
+  public itemsLeft: Number = 0;
+  public todos = [
     { description: "EHEHEEHEHEHE" },
     { description: "AHdadadada" },
     { description: "AHdadadada" },
@@ -21,9 +21,10 @@ export class TodoComponent {
     { description: "AHdadadada" }
   ]
 
-  saveTodo(event: any) {
-    this.todos.push({ description: event.target.value });
-    event.target.value = null;
+  saveTodo(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.todos.push({ description: target.value });
+    target.value = '';
   }
 
 }

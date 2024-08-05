@@ -1,6 +1,18 @@
 @import "./../../../styles/variables.scss";
 @import "./../../../styles/mixins.scss";
 
+button {
+  user-select: none;
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+  font-weight: 700;
+  color: $Light-Grayish-Blue;
+  &:hover {
+    color: $Very-Dark-Grayish-Blue;
+  }
+}
+
 .create-todo {
   flex: 1;
   border: none;
@@ -51,7 +63,7 @@ h1 {
 
 .todo-container {
   background-color: white;
-  box-shadow: 1px 11px 89px $Light-Grayish-Blue;
+  box-shadow: 0px 44px 48px -22px $Light-Grayish-Blue;
 
   ul {
     list-style: none;
@@ -70,15 +82,15 @@ h1 {
     border-top-right-radius: 4px;
   }
 
-  .btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-color: inherit;
-    cursor: pointer;
-    img {
-      width: 16px;
-    }
+  .btn-delete {
+    width: 2.2rem;
+    height: 2.2rem;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  &:hover > .btn-delete {
+    visibility: visible;
+    pointer-events: all;
   }
 }
 
@@ -129,4 +141,33 @@ h1 {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.actions {
+  @include flexboxcustom();
+  height: 3.4rem;
+  padding: 1rem;
+
+  .items-left {
+    color: $Light-Grayish-Blue;
+    font-size: 0.8rem;
+  }
+
+  .btn-clear {
+    font-weight: 400;
+  }
+}
+
+.filters {
+  @include flexboxcustom(space-between);
+  height: 3.4rem;
+  padding-left: 1.5rem;
+  width: 11rem;
+}
+
+.drag-info {
+  margin-top: 2rem;
+  text-align: center;
+  color: $Dark-Grayish-Blue;
+  font-size: 0.8rem;
 }
