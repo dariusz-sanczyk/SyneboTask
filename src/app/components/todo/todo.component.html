@@ -14,11 +14,18 @@
           (keydown.enter)="saveTodo($event)"
         />
       </div>
-      <div class="todo-container">
+      <div
+        class="todo-container"
+        cdkDropList
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListData]="filteredTodos$"
+      >
         <ul>
           <div
             class="todo-element"
             [ngClass]="{ completed: todo.isCompleted }"
+            cdkDrag
+            [cdkDragData]="todo"
             *ngFor="let todo of filteredTodos$ | async"
           >
             <label class="checkbox-label">

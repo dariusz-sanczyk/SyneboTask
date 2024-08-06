@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TodosService } from '../../services/todos.service';
 import { Todo } from '../../models/Todo.interface';
 import { combineLatest, map, Observable } from 'rxjs';
@@ -9,8 +10,7 @@ import { media } from './../../utils/media';
 @Component({
   selector: 'app-todo',
   standalone: true,
-  host: { ngSkipHydration: 'true' },
-  imports: [CommonModule],
+  imports: [CommonModule, DragDropModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
@@ -62,6 +62,25 @@ export class TodoComponent {
 
   public removeCompleted() {
     this.todosService.removeCompleted();
+  };
+
+  drop(event: CdkDragDrop<Observable<Todo[]>>) {
+    if (event.previousContainer === event.container) {
+      event.container.data.subscribe(data => {
+        moveItemInArray(data, event.previousIndex, event.currentIndex);
+      });
+    } else {
+      event.previousContainer.data.subscribe(previousData => {
+        event.container.data.subscribe(currentData => {
+          transferArrayItem(
+            previousData,
+            currentData,
+            event.previousIndex,
+            event.currentIndex
+          );
+        });
+      });
+    }
   }
 };
 
