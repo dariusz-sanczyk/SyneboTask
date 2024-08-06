@@ -24,10 +24,12 @@ export class TodoComponent {
   public filter$: Observable<FilterEnum>;
   public desktop$ = media(`(min-width: 1124px)`)
   public mobile$ = media(`(max-width: 1124px)`)
+  public todos: Todo[] = []
 
   constructor(private todosService: TodosService) {
     this.filteredTodos$ = combineLatest([this.todosService.todos$,
     this.todosService.filter$]).pipe(map(([todos, filter]: [Todo[], FilterEnum]) => {
+      this.todos = todos;
       if (filter === FilterEnum.active) {
         return todos.filter((t) => !t.isCompleted);
       } else if (filter === FilterEnum.completed) {
@@ -64,23 +66,18 @@ export class TodoComponent {
     this.todosService.removeCompleted();
   };
 
-  drop(event: CdkDragDrop<Observable<Todo[]>>) {
+  drop(event: CdkDragDrop<Todo[]>) {
     if (event.previousContainer === event.container) {
-      event.container.data.subscribe(data => {
-        moveItemInArray(data, event.previousIndex, event.currentIndex);
-      });
+      moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
     } else {
-      event.previousContainer.data.subscribe(previousData => {
-        event.container.data.subscribe(currentData => {
-          transferArrayItem(
-            previousData,
-            currentData,
-            event.previousIndex,
-            event.currentIndex
-          );
-        });
-      });
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
+    this.todosService.updateTodos(this.todos); // Zaktualizuj stan w serwisie
   }
 };
 

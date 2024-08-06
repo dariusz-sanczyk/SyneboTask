@@ -50,4 +50,8 @@ export class TodosService {
     const updatedTodos = this.todos$.getValue().filter((t) => t.isCompleted === false);
     this.todos$.next(updatedTodos);
   };
+
+  updateTodos(todos: Todo[]): void {
+    this.todos$.next(todos);
+  }
 }
