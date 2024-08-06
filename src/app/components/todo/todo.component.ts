@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { TodosService } from '../../services/todos.service';
 import { Todo } from '../../models/Todo.interface';
 import { combineLatest, map, Observable } from 'rxjs';
-import { FilterEnum } from '../../models/filter.enum';
+import { FilterEnum } from '../../models/Filter.enum';
+import { media } from './../../utils/media';
 
 @Component({
   selector: 'app-todo',
@@ -21,6 +22,8 @@ export class TodoComponent {
   public filteredTodos$: Observable<Todo[]>;
   public filterEnum = FilterEnum;
   public filter$: Observable<FilterEnum>;
+  public desktop$ = media(`(min-width: 1124px)`)
+  public mobile$ = media(`(max-width: 1124px)`)
 
   constructor(private todosService: TodosService) {
     this.filteredTodos$ = combineLatest([this.todosService.todos$,

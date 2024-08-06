@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Todo } from '../models/Todo.interface';
-import { FilterEnum } from '../models/filter.enum';
+import { FilterEnum } from '../models/Filter.enum';
 
 @Injectable({
   providedIn: 'root'

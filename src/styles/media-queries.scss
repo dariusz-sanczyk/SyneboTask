@@ -1,6 +1,8 @@
-@media all and (max-width: 376px) {
-  $height: 2.8rem;
+@import "./variables.scss";
 
+$Height: 2.8rem;
+
+@media all and (max-width: 769px) {
   body {
     background-image: url("./../assets/bg-mobile-light.jpg");
   }
@@ -11,7 +13,7 @@
   }
 
   header {
-    height: $height;
+    height: $Height;
     margin-bottom: 0;
 
     h1 {
@@ -21,21 +23,27 @@
 
   .input-container {
     margin-top: 0.2rem;
-    height: $height;
+    height: $Height;
   }
 
   .todo-element {
-    height: $height;
+    height: $Height;
     > .btn-delete {
       visibility: visible;
     }
   }
 
   .actions {
-    height: $height;
+    height: $Height;
   }
 
   .filters {
-    height: $height;
+    height: $Height;
+    padding: 0 5rem;
+    background-color: white;
   }
+}
+
+.drag-info {
+  margin-top: 1.5rem;
 }

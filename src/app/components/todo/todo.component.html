@@ -40,7 +40,7 @@
           <p class="items-left">
             {{ itemsLeft$ | async }} {{ itemsLeftText$ | async }}
           </p>
-          <div class="filters">
+          <div class="filters" *ngIf="desktop$ | async">
             <button
               [ngClass]="{ active: (filter$ | async) === filterEnum.all }"
               (click)="selectFilter(filterEnum.all)"
@@ -66,6 +66,28 @@
             Clear Completed
           </button>
         </div>
+      </div>
+      <div class="filters" *ngIf="mobile$ | async">
+        <button
+          [ngClass]="{ active: (filter$ | async) === filterEnum.all }"
+          (click)="selectFilter(filterEnum.all)"
+        >
+          All
+        </button>
+        <button
+          [ngClass]="{ active: (filter$ | async) === filterEnum.active }"
+          (click)="selectFilter(filterEnum.active)"
+        >
+          Active
+        </button>
+        <button
+          [ngClass]="{
+            active: (filter$ | async) === filterEnum.completed
+          }"
+          (click)="selectFilter(filterEnum.completed)"
+        >
+          Completed
+        </button>
       </div>
       <p class="drag-info">Drag and drop to reorder list</p>
     </section>
