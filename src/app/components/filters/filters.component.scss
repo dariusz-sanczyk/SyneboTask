@@ -1,0 +1,29 @@
+@import "./../../../styles/variables.scss";
+@import "./../../../styles/mixins.scss";
+
+button {
+  user-select: none;
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+  font-weight: $Bold;
+  color: $Dark-Grayish-Blue;
+
+  &:hover {
+    color: $Very-Dark-Grayish-Blue;
+  }
+}
+
+.active {
+  color: $Bright-Blue;
+}
+
+.filters {
+  @include flexboxcustom(space-between);
+  height: $Height;
+  padding-left: 1.5rem;
+  width: 11rem;
+  border-radius: $Border-Radius;
+}
+
+@import "./../../../styles/media-queries.scss";

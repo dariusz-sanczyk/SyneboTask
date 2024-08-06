@@ -47,55 +47,13 @@
           <p class="items-left">
             {{ itemsLeft$ | async }} {{ itemsLeftText$ | async }}
           </p>
-          <div class="filters" *ngIf="desktop$ | async">
-            <button
-              [ngClass]="{ active: (filter$ | async) === filterEnum.all }"
-              (click)="selectFilter($event, filterEnum.all)"
-            >
-              All
-            </button>
-            <button
-              [ngClass]="{ active: (filter$ | async) === filterEnum.active }"
-              (click)="selectFilter($event, filterEnum.active)"
-            >
-              Active
-            </button>
-            <button
-              [ngClass]="{
-                active: (filter$ | async) === filterEnum.completed
-              }"
-              (click)="selectFilter($event, filterEnum.completed)"
-            >
-              Completed
-            </button>
-          </div>
+          <app-filters *ngIf="desktop$ | async"></app-filters>
           <button class="btn-clear" (click)="removeCompleted()">
             Clear Completed
           </button>
         </div>
       </div>
-      <div class="filters" *ngIf="mobile$ | async">
-        <button
-          [ngClass]="{ active: (filter$ | async) === filterEnum.all }"
-          (click)="selectFilter($event, filterEnum.all)"
-        >
-          All
-        </button>
-        <button
-          [ngClass]="{ active: (filter$ | async) === filterEnum.active }"
-          (click)="selectFilter($event, filterEnum.active)"
-        >
-          Active
-        </button>
-        <button
-          [ngClass]="{
-            active: (filter$ | async) === filterEnum.completed
-          }"
-          (click)="selectFilter($event, filterEnum.completed)"
-        >
-          Completed
-        </button>
-      </div>
+      <app-filters *ngIf="mobile$ | async"></app-filters>
       <p class="drag-info">Drag and drop to reorder list</p>
     </section>
   </main>

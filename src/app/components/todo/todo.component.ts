@@ -6,11 +6,12 @@ import { Todo } from '../../models/Todo.interface';
 import { combineLatest, map, Observable } from 'rxjs';
 import { FilterEnum } from '../../models/Filter.enum';
 import { media } from './../../utils/media';
+import { FiltersComponent } from '../filters/filters.component';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [CommonModule, DragDropModule],
+  imports: [CommonModule, DragDropModule, FiltersComponent],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
@@ -51,7 +52,6 @@ export class TodoComponent {
   };
 
   public selectFilter(event: Event, filterType: FilterEnum): void {
-    event.preventDefault
     this.todosService.changeFilter(filterType);
   }
 

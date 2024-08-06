@@ -1,0 +1,22 @@
+<div class="filters">
+  <button
+    [ngClass]="{ active: (filter$ | async) === filterEnum.all }"
+    (click)="selectFilter(filterEnum.all)"
+  >
+    All
+  </button>
+  <button
+    [ngClass]="{ active: (filter$ | async) === filterEnum.active }"
+    (click)="selectFilter(filterEnum.active)"
+  >
+    Active
+  </button>
+  <button
+    [ngClass]="{
+      active: (filter$ | async) === filterEnum.completed
+    }"
+    (click)="selectFilter(filterEnum.completed)"
+  >
+    Completed
+  </button>
+</div>
