@@ -165,7 +165,8 @@ h1 {
   @include flexboxcustom();
   height: $Height;
   padding: 1rem;
-  box-shadow: 0px 64px 48px 12px $Light-Grayish-Blue;
+  box-shadow: 0px 14px 80px -22px $Very-Dark-Grayish-Blue;
+  background-color: $Very-Light-Gray;
   .items-left {
     color: $Dark-Grayish-Blue;
     font-size: 0.8rem;
