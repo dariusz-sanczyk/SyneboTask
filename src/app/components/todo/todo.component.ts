@@ -50,7 +50,8 @@ export class TodoComponent {
     target.value = '';
   };
 
-  public selectFilter(filterType: FilterEnum): void {
+  public selectFilter(event: Event, filterType: FilterEnum): void {
+    event.preventDefault
     this.todosService.changeFilter(filterType);
   }
 
