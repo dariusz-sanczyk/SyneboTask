@@ -15,10 +15,12 @@ import { FilterEnum } from '../../models/filter.enum';
 })
 
 export class TodoComponent {
-  public itemsLeft: Number = 0;
   private todoDescription: string = '';
-  public todoList: Todo[] = [];
+  public itemsLeft$: Observable<number>;
+  public itemsLeftText$: Observable<string>;
   public filteredTodos$: Observable<Todo[]>;
+  public filterEnum = FilterEnum;
+  public filter$: Observable<FilterEnum>;
 
   constructor(private todosService: TodosService) {
     this.filteredTodos$ = combineLatest([this.todosService.todos$,
@@ -30,12 +32,36 @@ export class TodoComponent {
       }
       return todos;
     }));
+
+    this.itemsLeft$ = this.todosService.todos$.pipe(map((todos) => todos.filter((t) => !t.isCompleted).length));
+    this.itemsLeftText$ = this.itemsLeft$.pipe(map((items) => `item${items === 1 ? '' : 's'} left`));
+    this.filter$ = this.todosService.filter$
   };
 
-  saveTodo(event: Event) {
+  public saveTodo(event: Event) {
     const target = event.target as HTMLInputElement;
     this.todoDescription = target.value;
     this.todosService.addTodo(this.todoDescription);
     target.value = '';
   };
+
+  public selectFilter(filterType: FilterEnum): void {
+    this.todosService.changeFilter(filterType);
+  }
+
+  public changeTodoStatus(id: string): void {
+    this.todosService.changeTodoStatus(id);
+  };
+
+  public removeTodo(id: string): void {
+    this.todosService.removeTodo(id);
+  };
+
+  public removeCompleted() {
+    this.todosService.removeCompleted();
+  }
 };
+
+
+
+

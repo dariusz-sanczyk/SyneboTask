@@ -1,0 +1,41 @@
+@media all and (max-width: 376px) {
+  $height: 2.8rem;
+
+  body {
+    background-image: url("./../assets/bg-mobile-light.jpg");
+  }
+
+  .wrapper {
+    width: 87%;
+    padding: 35px 0;
+  }
+
+  header {
+    height: $height;
+    margin-bottom: 0;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .input-container {
+    margin-top: 0.2rem;
+    height: $height;
+  }
+
+  .todo-element {
+    height: $height;
+    > .btn-delete {
+      visibility: visible;
+    }
+  }
+
+  .actions {
+    height: $height;
+  }
+
+  .filters {
+    height: $height;
+  }
+}

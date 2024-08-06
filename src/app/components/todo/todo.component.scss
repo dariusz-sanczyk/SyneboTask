@@ -7,10 +7,24 @@ button {
   cursor: pointer;
   background-color: inherit;
   font-weight: 700;
-  color: $Light-Grayish-Blue;
+  color: $Dark-Grayish-Blue;
+
   &:hover {
     color: $Very-Dark-Grayish-Blue;
   }
+}
+
+.completed {
+  text-decoration: line-through;
+  text-decoration-color: $Light-Grayish-Blue;
+  text-decoration-thickness: 1px;
+  li {
+    color: $Light-Grayish-Blue;
+  }
+}
+
+.active {
+  color: $Bright-Blue;
 }
 
 .create-todo {
@@ -149,8 +163,9 @@ h1 {
   padding: 1rem;
 
   .items-left {
-    color: $Light-Grayish-Blue;
+    color: $Dark-Grayish-Blue;
     font-size: 0.8rem;
+    width: 4.3rem;
   }
 
   .btn-clear {
@@ -171,3 +186,5 @@ h1 {
   color: $Dark-Grayish-Blue;
   font-size: 0.8rem;
 }
+
+@import "./../../../styles/media-queries.scss";

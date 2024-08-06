@@ -16,25 +16,55 @@
       </div>
       <div class="todo-container">
         <ul>
-          <div class="todo-element" *ngFor="let todo of filteredTodos$ | async">
+          <div
+            class="todo-element"
+            [ngClass]="{ completed: todo.isCompleted }"
+            *ngFor="let todo of filteredTodos$ | async"
+          >
             <label class="checkbox-label">
-              <input class="checkbox" type="checkbox" />
+              <input
+                class="checkbox"
+                type="checkbox"
+                [checked]="todo.isCompleted"
+                (change)="changeTodoStatus(todo.id)"
+              />
               <span class="checkbox-circle"></span>
             </label>
             <li class="todo-description">{{ todo.description }}</li>
-            <button class="btn-delete">
+            <button class="btn-delete" (click)="removeTodo(todo.id)">
               <img src="./../../../assets/icon-cross.svg" alt="cross" />
             </button>
           </div>
         </ul>
         <div class="actions">
-          <p class="items-left">{{ itemsLeft }} items left</p>
+          <p class="items-left">
+            {{ itemsLeft$ | async }} {{ itemsLeftText$ | async }}
+          </p>
           <div class="filters">
-            <button class="filter-btn all active">All</button>
-            <button class="filter-btn live">Active</button>
-            <button class="filter-btn completed-btn">Completed</button>
+            <button
+              [ngClass]="{ active: (filter$ | async) === filterEnum.all }"
+              (click)="selectFilter(filterEnum.all)"
+            >
+              All
+            </button>
+            <button
+              [ngClass]="{ active: (filter$ | async) === filterEnum.active }"
+              (click)="selectFilter(filterEnum.active)"
+            >
+              Active
+            </button>
+            <button
+              [ngClass]="{
+                active: (filter$ | async) === filterEnum.completed
+              }"
+              (click)="selectFilter(filterEnum.completed)"
+            >
+              Completed
+            </button>
           </div>
-          <button class="btn-clear">Clear Completed</button>
+          <button class="btn-clear" (click)="removeCompleted()">
+            Clear Completed
+          </button>
         </div>
       </div>
       <p class="drag-info">Drag and drop to reorder list</p>
