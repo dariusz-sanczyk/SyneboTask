@@ -40,7 +40,7 @@ export class TodoComponent {
 
     this.itemsLeft$ = this.todosService.todos$.pipe(map((todos) => todos.filter((t) => !t.isCompleted).length));
     this.itemsLeftText$ = this.itemsLeft$.pipe(map((items) => `item${items === 1 ? '' : 's'} left`));
-    this.filter$ = this.todosService.filter$
+    this.filter$ = this.todosService.filter$;
   };
 
   public saveTodo(event: Event) {
@@ -77,8 +77,8 @@ export class TodoComponent {
         event.currentIndex
       );
     }
-    this.todosService.updateTodos(this.todos); // Zaktualizuj stan w serwisie
-  }
+    this.todosService.updateTodos(this.todos);
+  };
 };
 
 

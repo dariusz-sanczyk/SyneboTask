@@ -19,6 +19,10 @@ $Height: 2.8rem;
     h1 {
       font-size: 1.5rem;
     }
+
+    img {
+      width: 1.1rem;
+    }
   }
 
   .input-container {
@@ -33,10 +37,6 @@ $Height: 2.8rem;
     }
   }
 
-  img {
-    width: 1.1rem;
-  }
-
   .actions {
     height: $Height;
   }
@@ -44,7 +44,8 @@ $Height: 2.8rem;
   .filters {
     height: $Height;
     padding: 0 5rem;
-    background-color: white;
+    background-color: $Very-Light-Gray;
+    box-shadow: 0px 0px 48px 0px $Light-Grayish-Blue;
   }
 }
 

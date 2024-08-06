@@ -8,10 +8,10 @@ import { FilterEnum } from '../models/Filter.enum';
 })
 export class TodosService {
 
-  constructor() { }
+  constructor() { };
 
-  todos$ = new BehaviorSubject<Todo[]>([])
-  filter$ = new BehaviorSubject<FilterEnum>(FilterEnum.all)
+  todos$ = new BehaviorSubject<Todo[]>([]);
+  filter$ = new BehaviorSubject<FilterEnum>(FilterEnum.all);
 
   addTodo(todoDesc: string): void {
     const newTodo: Todo = {
@@ -53,5 +53,5 @@ export class TodosService {
 
   updateTodos(todos: Todo[]): void {
     this.todos$.next(todos);
-  }
+  };
 }

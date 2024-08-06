@@ -1,12 +1,25 @@
 @import "./../../../styles/variables.scss";
 @import "./../../../styles/mixins.scss";
 
+.wrapper {
+  @include flexboxcustom(flex-start, column);
+  padding: 75px 0;
+  width: 38%;
+  min-height: 90vh;
+
+  > * {
+    width: 100%;
+    border-radius: $Border-Radius;
+    margin-bottom: 18px;
+  }
+}
+
 button {
   user-select: none;
   border: none;
   cursor: pointer;
   background-color: inherit;
-  font-weight: 700;
+  font-weight: $Bold;
   color: $Dark-Grayish-Blue;
 
   &:hover {
@@ -14,38 +27,23 @@ button {
   }
 }
 
-.completed {
-  text-decoration: line-through;
-  text-decoration-color: $Light-Grayish-Blue;
-  text-decoration-thickness: 1px;
-  li {
-    color: $Light-Grayish-Blue;
-  }
-}
-
 .active {
   color: $Bright-Blue;
 }
 
-.create-todo {
-  flex: 1;
-  border: none;
-  background-color: white;
-  color: $Very-Dark-Grayish-Blue;
-  font-size: 1rem;
-  margin-right: 1.3rem;
-  outline: none;
+.header {
+  @include flexboxcustom();
 }
 
 h1 {
   font-size: 2.3rem;
-  font-weight: 700;
-  color: white;
+  font-weight: $Bold;
+  color: $Very-Light-Gray;
 }
 
 .input-container {
   @include flexboxcustom();
-  background-color: white;
+  background-color: $Very-Light-Gray;
   height: $Height;
   margin-top: 1.5rem;
 
@@ -57,27 +55,18 @@ h1 {
     margin: 0 1.3rem;
   }
 }
-
-.header {
-  @include flexboxcustom();
-}
-
-.wrapper {
-  @include flexboxcustom(flex-start, column);
-  padding: 75px 0;
-  width: 38%;
-  min-height: 90vh;
-
-  > * {
-    width: 100%;
-    border-radius: 4px;
-    margin-bottom: 18px;
-  }
+.create-todo {
+  flex: 1;
+  border: none;
+  background-color: $Very-Light-Gray;
+  color: $Very-Dark-Grayish-Blue;
+  font-size: 1rem;
+  margin-right: 1.3rem;
+  outline: none;
 }
 
 .todo-container {
-  background-color: white;
-  box-shadow: 0px 22px 48px -22px $Light-Grayish-Blue;
+  background-color: $Very-Light-Gray;
 
   ul {
     list-style: none;
@@ -87,13 +76,13 @@ h1 {
 .todo-element {
   @include flexboxcustom();
   height: $Height;
-  background-color: White;
+  background-color: $Very-Light-Gray;
   border-bottom: 1px solid $Light-Grayish-Blue;
   padding: 0 0.5rem 0 1.3rem;
 
   &:first-of-type {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: $Border-Radius;
+    border-top-right-radius: $Border-Radius;
   }
 
   .btn-delete {
@@ -110,8 +99,9 @@ h1 {
 
 .todo-element.cdk-drag-preview {
   opacity: 0.4;
-  background-color: #c9c9c9;
+  background-color: $Very-Light-Gray;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
 }
 
 .checkbox-label {
@@ -127,7 +117,7 @@ h1 {
   .checkbox-circle {
     width: 22px;
     height: 22px;
-    background-color: White;
+    background-color: $Very-Light-Gray;
     border-radius: 50%;
   }
 
@@ -162,12 +152,20 @@ h1 {
   text-overflow: ellipsis;
 }
 
+.completed {
+  text-decoration: line-through;
+  text-decoration-color: $Light-Grayish-Blue;
+  text-decoration-thickness: 1px;
+  li {
+    color: $Light-Grayish-Blue;
+  }
+}
+
 .actions {
   @include flexboxcustom();
   height: $Height;
   padding: 1rem;
-  box-shadow: 0px 22px 48px 0px $Light-Grayish-Blue;
-
+  box-shadow: 0px 32px 48px -16px $Light-Grayish-Blue;
   .items-left {
     color: $Dark-Grayish-Blue;
     font-size: 0.8rem;
@@ -175,7 +173,7 @@ h1 {
   }
 
   .btn-clear {
-    font-weight: 400;
+    font-weight: $Normal;
   }
 }
 
